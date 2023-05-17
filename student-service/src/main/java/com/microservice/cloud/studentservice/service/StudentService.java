@@ -1,6 +1,7 @@
 package com.microservice.cloud.studentservice.service;
 
 import com.microservice.cloud.studentservice.entity.Student;
+import com.microservice.cloud.studentservice.feignClient.AddressFeignClient;
 import com.microservice.cloud.studentservice.repo.StudentRepository;
 import com.microservice.cloud.studentservice.request.CreateStudentRequest;
 import com.microservice.cloud.studentservice.response.AddressResponse;
@@ -19,6 +20,9 @@ public class StudentService {
 	@Autowired
 	WebClient webClient;
 
+	@Autowired
+	AddressFeignClient addressFeignClient;
+
 
 	public StudentResponse createStudent(CreateStudentRequest createStudentRequest) {
 		Student student = new Student();
@@ -30,7 +34,12 @@ public class StudentService {
 		student = studentRepository.save(student);
 
 		StudentResponse studentResponse = new StudentResponse(student);
-		studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
+
+		//web client
+		//studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
+
+		//feign client
+		studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
 
 		return studentResponse;
 	}
@@ -39,7 +48,11 @@ public class StudentService {
 		Student student = studentRepository.findById(id).get();
 		StudentResponse studentResponse = new StudentResponse(student);
 
-		studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
+		//web client
+		//studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
+
+		//feign client
+		studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
 
 		return studentResponse;
 	}
