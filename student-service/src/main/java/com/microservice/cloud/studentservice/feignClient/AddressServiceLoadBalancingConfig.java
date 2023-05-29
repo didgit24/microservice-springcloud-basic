@@ -1,3 +1,4 @@
+/*
 package com.microservice.cloud.studentservice.feignClient;
 
 import feign.Feign;
@@ -14,3 +15,4 @@ public class AddressServiceLoadBalancingConfig {
         return Feign.builder();
     }
 }
+*/
