@@ -6,6 +6,7 @@ import com.microservice.cloud.studentservice.repo.StudentRepository;
 import com.microservice.cloud.studentservice.request.CreateStudentRequest;
 import com.microservice.cloud.studentservice.response.AddressResponse;
 import com.microservice.cloud.studentservice.response.StudentResponse;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -23,6 +24,8 @@ public class StudentService {
 	@Autowired
 	AddressFeignClient addressFeignClient;
 
+	@Autowired
+	CommonService commonService;
 
 	public StudentResponse createStudent(CreateStudentRequest createStudentRequest) {
 		Student student = new Student();
@@ -39,7 +42,10 @@ public class StudentService {
 		//studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
 
 		//feign client
-		studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
+		//studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
+
+		//fault tolerance
+		studentResponse.setAddressResponse(commonService.getAddressById(student.getAddressId()));
 
 		return studentResponse;
 	}
@@ -52,15 +58,18 @@ public class StudentService {
 		//studentResponse.setAddressResponse(getAddressById(student.getAddressId()));
 
 		//feign client
-		studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
+		//studentResponse.setAddressResponse(addressFeignClient.getByTd(student.getAddressId()));
+
+		//fault tolerance
+		studentResponse.setAddressResponse(commonService.getAddressById(student.getAddressId()));
 
 		return studentResponse;
 	}
 
-	public AddressResponse getAddressById (long addressId) {
-		Mono<AddressResponse> addressResponseMono = webClient.get().uri("/getById/" + addressId)
-				.retrieve().bodyToMono(AddressResponse.class);
-
-		return addressResponseMono.block();
-	}
+//	public AddressResponse getAddressById (long addressId) {
+//		Mono<AddressResponse> addressResponseMono = webClient.get().uri("/getById/" + addressId)
+//				.retrieve().bodyToMono(AddressResponse.class);
+//
+//		return addressResponseMono.block();
+//	}
 }
