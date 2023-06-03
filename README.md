@@ -35,3 +35,9 @@ API gateway is the middleman, a separate microservice. API gateway will route th
 
 #### zipkin start command
 java -jar zipkin-server-2.24.2-exec.jar  ----- default port 9411
+
+## spring cloud config server
+- Store envrionment related prperties in Git. Config server is a sseparate microservice. Config server will read the properties from Git and provide them to different microservice. We have different profiles like DEV, QA, PROD.
+- Rename application.properties to bootstrap.properties to work with config server.
+- Microservices reads the properties value on start up. So any change in properties it should be restarted. Although config server reads the updated values.
+- To overcome, we can use actuator. add actuator refresh the properties. Add @RefreshScope annotation.

@@ -58,6 +58,25 @@
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 			<version>${spring.cloud.version}</version>
 		</dependency>
+
+		<!-- config server dependency -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+			<version>${spring.cloud.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>${spring.cloud.version}</version>
+		</dependency>
+
+		<!-- actuator dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

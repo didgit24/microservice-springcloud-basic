@@ -1,0 +1,270 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "id": "818a4c2f-35f1-4289-bbf9-ed76911183c2",
+        "name": "microservice-springcloud"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Scenario",
+            "id": "5044eacb-4e9d-47eb-874f-77dd0b0047bd",
+            "name": "Scenario 1"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8082",
+                  "path": "/api/address/getById/1"
+                },
+                "id": "4dada5a5-ffdc-412c-8d49-552599b28b9e",
+                "name": "Get-AddressById - address-service",
+                "headers": [],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/student/getById/1"
+                },
+                "id": "941dde5a-7cdd-459f-9459-38d73e29893e",
+                "name": "Get-StudentById - monolithic",
+                "headers": [],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:9090",
+                  "path": "/student-service/api/student/getById/1"
+                },
+                "id": "85859846-228f-4a86-a772-603df738c82e",
+                "name": "Get-StudentById - API gateway",
+                "headers": [],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8888",
+                  "path": "/address-service/dev"
+                },
+                "id": "ee0f5f9e-1783-4f8b-8ba7-a946fbd9f2a0",
+                "name": "config server",
+                "headers": [],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8082",
+                  "path": "/api/address/test"
+                },
+                "id": "ff0d1779-4be2-41d7-800a-4e4e7f9aba47",
+                "name": "Address service",
+                "headers": [],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8082",
+                  "path": "/actuator/refresh"
+                },
+                "id": "0e7c6a3a-8fc3-4bc8-9cd0-1e8dd0fcb65a",
+                "name": "Address service actuator",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "assertions": [
+                  {
+                    "comparison": "Exists",
+                    "subject": "ResponseBody",
+                    "path": "content",
+                    "value": ""
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
